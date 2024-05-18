@@ -18,7 +18,7 @@ public interface ProdutoControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Produto Criado:"),
     })
-    ResponseEntity<ProdutoResponseDTO> cadastrar(ProdutoDTO produtoDTO, HttpServletRequest request, UriComponentsBuilder uriBuilder);
+    ResponseEntity<ProdutoResponseDTO> cadastrar(ProdutoDTO produtoDTO, UriComponentsBuilder uriBuilder);
 
     @Operation(summary = "Listagem dos Produtos")
     @ApiResponses(value = {

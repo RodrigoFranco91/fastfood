@@ -27,7 +27,7 @@ public class ProdutoController implements ProdutoControllerPort {
 
 
     @PostMapping
-    public ResponseEntity<ProdutoResponseDTO> cadastrar(@RequestBody ProdutoDTO produtoDTO, HttpServletRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ProdutoResponseDTO> cadastrar(@RequestBody ProdutoDTO produtoDTO, UriComponentsBuilder uriBuilder) {
 
         var response = produtoService.cadastraProduto(produtoDTO);
         URI uri = uriBuilder.path("/produto/{id}").buildAndExpand(response.id()).toUri();
