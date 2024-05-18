@@ -1,7 +1,6 @@
 package br.com.fastfood.domain.core;
 
 
-
 import br.com.fastfood.application.adapter.rest.dto.request.ProdutoDTO;
 
 import java.math.BigDecimal;
@@ -27,6 +26,15 @@ public class Produto {
 
     public Produto(ProdutoDTO produtoDTO) {
 
+        this.nome = produtoDTO.nome();
+        this.categoria = Categoria.valueOf(produtoDTO.categoria().name());
+        this.preco = produtoDTO.preco();
+        this.descricao = produtoDTO.descricao();
+        this.imagem = produtoDTO.imagem();
+    }
+
+    public Produto(UUID id, ProdutoDTO produtoDTO) {
+        this.id = id;
         this.nome = produtoDTO.nome();
         this.categoria = Categoria.valueOf(produtoDTO.categoria().name());
         this.preco = produtoDTO.preco();

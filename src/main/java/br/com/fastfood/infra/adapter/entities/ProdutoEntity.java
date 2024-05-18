@@ -4,6 +4,8 @@ package br.com.fastfood.infra.adapter.entities;
 import br.com.fastfood.domain.core.Categoria;
 import br.com.fastfood.domain.core.Produto;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -12,8 +14,9 @@ import java.util.UUID;
 @Table(name = "produtos")
 public class ProdutoEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @Column(columnDefinition = "varchar(36)")
     private UUID id;
     private String nome;
 
@@ -36,5 +39,29 @@ public class ProdutoEntity {
 
     public Produto toDomain() {
         return new Produto(this.id, this.nome, this.categoria, this.preco, this.descricao, this.imagem);
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
