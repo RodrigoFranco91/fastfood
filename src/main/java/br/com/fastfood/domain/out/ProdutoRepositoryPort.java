@@ -1,6 +1,7 @@
 package br.com.fastfood.domain.out;
 
 
+import br.com.fastfood.domain.core.Categoria;
 import br.com.fastfood.domain.core.Produto;
 
 import java.util.Set;
@@ -17,4 +18,6 @@ public interface ProdutoRepositoryPort {
     void removerProduto(UUID id);
 
     Produto atualizarProduto(Produto produto);
+
+    Set<Produto> pegarProdutosPelaCategoria(Categoria categoria);
 }

@@ -2,6 +2,7 @@ package br.com.fastfood.infra.adapter.repositories;
 
 
 import br.com.fastfood.application.adapter.rest.dto.response.ProdutoResponseDTO;
+import br.com.fastfood.domain.core.Categoria;
 import br.com.fastfood.domain.core.Produto;
 import br.com.fastfood.domain.out.ProdutoRepositoryPort;
 import br.com.fastfood.infra.adapter.entities.ProdutoEntity;
@@ -64,6 +65,12 @@ public class ProdutoRepositoryAdapter implements ProdutoRepositoryPort {
         springProdutoRepository.save(produtoEntity);
 
         return produtoEntity.toDomain();
+    }
+
+    @Override
+    public Set<Produto> pegarProdutosPelaCategoria(Categoria categoria) {
+        var produtosEntities = springProdutoRepository.findByCategoria(categoria);
+        return produtosEntities.stream().map(ProdutoEntity::toDomain).collect(Collectors.toSet());
     }
 
 }

@@ -43,4 +43,10 @@ public interface ProdutoControllerPort {
             @ApiResponse(responseCode = "200", description = "Produto foi Atualizado:"),
     })
     ResponseEntity<ProdutoResponseDTO> atualizarProduto(UUID id, ProdutoDTO produtoDTO);
+
+    @Operation(summary = "Listagem de Produtos através de Categoria:")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produtos Existentes na categoria selecionada:"),
+    })
+    ResponseEntity<Set<ProdutoResponseDTO>> listagemDeProdutosPelaCategoria(String categoria);
 }

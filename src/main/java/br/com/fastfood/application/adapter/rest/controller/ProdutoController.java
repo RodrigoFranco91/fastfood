@@ -58,4 +58,9 @@ public class ProdutoController implements ProdutoControllerPort {
         var response = produtoService.atualizarProduto(id, produtoDTO);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/categoria")
+    public ResponseEntity<Set<ProdutoResponseDTO>> listagemDeProdutosPelaCategoria(@RequestParam(name = "nome") String categoria) {
+        return ResponseEntity.ok(produtoService.listarProdutosPelaCategoria(categoria));
+    }
 }

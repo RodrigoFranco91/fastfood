@@ -19,4 +19,6 @@ public interface ProdutoServicePort {
      void deletarProduto(UUID id);
 
      ProdutoResponseDTO atualizarProduto(UUID id, ProdutoDTO produtoDTO);
+
+     Set<ProdutoResponseDTO> listarProdutosPelaCategoria(String categoria);
 }
