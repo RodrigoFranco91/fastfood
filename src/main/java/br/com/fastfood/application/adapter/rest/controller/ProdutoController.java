@@ -47,9 +47,9 @@ public class ProdutoController implements ProdutoControllerPort {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarProduto(@PathVariable UUID id) {
+    public ResponseEntity<Void> deletarProduto(@PathVariable UUID id) {
         produtoService.deletarProduto(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
     @Override

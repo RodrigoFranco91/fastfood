@@ -6,7 +6,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Set;
 
 public interface ClienteControllerPort {
 
@@ -21,4 +25,22 @@ public interface ClienteControllerPort {
             @ApiResponse(responseCode = "200", description = "Cliente encontrado:"),
     })
     ResponseEntity<ClienteResponseDTO> listaPorCpf(String cpf);
+
+    @Operation(summary = "Busca todos os clientes")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente encontrado:"),
+    })
+    ResponseEntity<Set<ClienteResponseDTO>> listar();
+
+    @Operation(summary = "Deleta cliente por cpf")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Cliente deletado"),
+    })
+    ResponseEntity<Void> deletar(String cpf);
+
+    @Operation(summary = "Atualiza cliente por cpf")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente atualizado"),
+    })
+    ResponseEntity<ClienteResponseDTO> atualizar(@RequestBody ClienteDTO clienteDTO);
 }

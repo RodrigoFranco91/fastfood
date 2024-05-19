@@ -36,9 +36,9 @@ public interface ProdutoControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Produto foi deletado."),
     })
-    ResponseEntity<String> deletarProduto(UUID id);
+    ResponseEntity<Void> deletarProduto(UUID id);
 
-    @Operation(summary = "Atualição de Produto")
+    @Operation(summary = "Atualização de Produto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Produto foi Atualizado:"),
     })

@@ -7,6 +7,9 @@ import br.com.fastfood.domain.in.ClienteServicePort;
 import br.com.fastfood.infra.adapter.repositories.ClienteRepositoryAdapter;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 public class ClienteServiceAdapter implements ClienteServicePort {
 
@@ -27,5 +30,22 @@ public class ClienteServiceAdapter implements ClienteServicePort {
     public ClienteResponseDTO buscaPorCpf(String cpf) {
         var cliente = clienteRepository.pesquisaPorCpf(cpf);
         return new ClienteResponseDTO(cliente);
+    }
+
+    @Override
+    public Set<ClienteResponseDTO> buscaClientes() {
+        var clientes = clienteRepository.buscaClientes();
+        return clientes.stream().map(ClienteResponseDTO::new).collect(Collectors.toSet());
+    }
+
+    @Override
+    public void deletaCliente(String cpf) {
+        clienteRepository.deletaCliente(cpf);
+    }
+
+    @Override
+    public ClienteResponseDTO atualizaCliente(ClienteDTO clienteDTO) {
+        var clienteAtualizado = clienteRepository.atualizaCliente(new Cliente(clienteDTO));
+        return new ClienteResponseDTO(clienteAtualizado);
     }
 }

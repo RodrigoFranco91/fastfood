@@ -11,4 +11,6 @@ import java.util.UUID;
 public interface SpringClienteRepository extends JpaRepository<ClienteEntity, UUID> {
 
     Optional<ClienteEntity> findByCpf(String cpf);
+
+    void deleteByCpf(String cpf);
 }
