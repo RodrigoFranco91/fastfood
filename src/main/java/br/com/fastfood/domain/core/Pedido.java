@@ -16,12 +16,10 @@ public class Pedido {
     private List<ItemPedido> itensPedido;
 
 
-
-
     public void calculaTotal(){
 
         itensPedido.forEach(itemPedido -> {
-            total = total.plus(itemPedido.calculaTotal()));
+            total = total.add(itemPedido.calculaTotal());
         });
     }
 }
