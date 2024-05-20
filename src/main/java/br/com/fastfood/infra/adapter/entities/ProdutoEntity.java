@@ -7,14 +7,16 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
 @Table(name = "produtos")
-public class ProdutoEntity {
+public class ProdutoEntity implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(columnDefinition = "varchar(36)")
     private UUID id;
@@ -30,6 +32,7 @@ public class ProdutoEntity {
     }
 
     public ProdutoEntity(Produto produto) {
+        this.id = produto.getId();
         this.nome = produto.getNome();
         this.categoria = produto.getCategoria();
         this.preco = produto.getPreco();
@@ -63,5 +66,29 @@ public class ProdutoEntity {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
     }
 }

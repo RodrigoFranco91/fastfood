@@ -4,7 +4,6 @@ import br.com.fastfood.application.adapter.rest.dto.request.ClienteDTO;
 import br.com.fastfood.application.adapter.rest.dto.response.ClienteResponseDTO;
 import br.com.fastfood.application.port.ClienteControllerPort;
 import br.com.fastfood.domain.in.ClienteServicePort;
-import ch.qos.logback.core.net.server.Client;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;

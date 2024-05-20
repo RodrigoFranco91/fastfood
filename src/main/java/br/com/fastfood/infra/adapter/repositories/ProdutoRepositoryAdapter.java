@@ -1,13 +1,11 @@
 package br.com.fastfood.infra.adapter.repositories;
 
 
-import br.com.fastfood.application.adapter.rest.dto.response.ProdutoResponseDTO;
 import br.com.fastfood.domain.core.Categoria;
 import br.com.fastfood.domain.core.Produto;
 import br.com.fastfood.domain.out.ProdutoRepositoryPort;
 import br.com.fastfood.infra.adapter.entities.ProdutoEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 

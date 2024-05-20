@@ -2,6 +2,7 @@ package br.com.fastfood.domain.core;
 
 
 import br.com.fastfood.application.adapter.rest.dto.request.ProdutoDTO;
+import br.com.fastfood.infra.adapter.entities.ProdutoEntity;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -40,6 +41,16 @@ public class Produto {
         this.preco = produtoDTO.preco();
         this.descricao = produtoDTO.descricao();
         this.imagem = produtoDTO.imagem();
+    }
+
+    public Produto(ProdutoEntity produtoEntity) {
+        this.id = produtoEntity.getId();
+        this.nome = produtoEntity.getNome();
+        this.categoria = produtoEntity.getCategoria();
+        this.preco = produtoEntity.getPreco();
+        this.descricao = produtoEntity.getDescricao();
+        this.imagem = produtoEntity.getImagem();
+
     }
 
     public UUID getId() {

@@ -1,6 +1,7 @@
 package br.com.fastfood.domain.core;
 
 import br.com.fastfood.application.adapter.rest.dto.request.ClienteDTO;
+import br.com.fastfood.infra.adapter.entities.ClienteEntity;
 
 import java.util.UUID;
 
@@ -26,6 +27,14 @@ public class Cliente {
     private String nome;
     private String email;
     private String senha;
+
+    public Cliente(ClienteEntity clienteEntity) {
+        this.id = clienteEntity.getId();
+        this.cpf = clienteEntity.getCpf();
+        this.nome = clienteEntity.getNome();
+        this.email = clienteEntity.getEmail();
+        this.senha = clienteEntity.getSenha();
+    }
 
     public UUID getId() {
         return id;

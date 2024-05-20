@@ -5,7 +5,6 @@ import br.com.fastfood.application.adapter.rest.dto.response.ClienteResponseDTO;
 import br.com.fastfood.domain.core.Cliente;
 import br.com.fastfood.domain.in.ClienteServicePort;
 import br.com.fastfood.domain.out.ClienteRepositoryPort;
-import br.com.fastfood.infra.adapter.repositories.ClienteRepositoryAdapter;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -16,7 +15,7 @@ public class ClienteServiceAdapter implements ClienteServicePort {
 
     private ClienteRepositoryPort clienteRepository;
 
-    public ClienteServiceAdapter(ClienteRepositoryAdapter clienteRepository) {
+    public ClienteServiceAdapter(ClienteRepositoryPort clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 

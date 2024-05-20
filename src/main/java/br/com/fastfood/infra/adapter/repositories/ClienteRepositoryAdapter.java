@@ -5,24 +5,21 @@ import br.com.fastfood.domain.core.Cliente;
 import br.com.fastfood.domain.out.ClienteRepositoryPort;
 import br.com.fastfood.infra.adapter.entities.ClienteEntity;
 import jakarta.transaction.Transactional;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
 public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
+    private SpringClienteRepository springClienteRepository;
 
     public ClienteRepositoryAdapter(SpringClienteRepository springClienteRepository) {
         this.springClienteRepository = springClienteRepository;
     }
-
-    private SpringClienteRepository springClienteRepository;
 
     @Override
     public Cliente insereCliente(Cliente cliente) {
