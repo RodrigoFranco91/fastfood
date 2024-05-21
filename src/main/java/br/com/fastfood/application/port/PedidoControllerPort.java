@@ -15,5 +15,5 @@ public interface PedidoControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Pedido realizado:"),
     })
-    ResponseEntity<PedidoResponseDTO> pedido(PedidoDTO pedidoDTO, UriComponentsBuilder uriBuilder);
+    ResponseEntity<?> pedido(PedidoDTO pedidoDTO, UriComponentsBuilder uriBuilder);
 }

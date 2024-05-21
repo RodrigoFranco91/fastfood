@@ -4,5 +4,5 @@ import br.com.fastfood.domain.core.Pedido;
 
 public interface PedidoRepositoryPort {
 
-    Pedido inserePedido(Pedido pedido);
+    void inserePedido(Pedido pedido);
 }

@@ -5,5 +5,5 @@ import br.com.fastfood.application.adapter.rest.dto.response.PedidoResponseDTO;
 
 public interface PedidoServicePort {
 
-    PedidoResponseDTO cadastrarPedido(PedidoDTO pedidoDTO);
+    void cadastrarPedido(PedidoDTO pedidoDTO);
 }

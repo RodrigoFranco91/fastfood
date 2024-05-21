@@ -16,10 +16,13 @@ public class ItemPedidoEntity implements Serializable {
     public ItemPedidoEntity() {
     }
 
-    public ItemPedidoEntity(ItemPedido itemPedido) {
+    public
+    ItemPedidoEntity(ItemPedido itemPedido) {
+
         this.produto = new ProdutoEntity(itemPedido.getProduto());
         this.quantidadeDoItem = itemPedido.getQuantidadeDoItem();
         this.precoAtualDoIem = itemPedido.getPrecoAtualDoIem();
+
     }
 
     @Id
@@ -54,5 +57,9 @@ public class ItemPedidoEntity implements Serializable {
 
     public BigDecimal getPrecoAtualDoIem() {
         return precoAtualDoIem;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
 }

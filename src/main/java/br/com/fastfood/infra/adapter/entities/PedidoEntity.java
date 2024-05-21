@@ -1,7 +1,5 @@
 package br.com.fastfood.infra.adapter.entities;
 
-import br.com.fastfood.domain.core.Cliente;
-import br.com.fastfood.domain.core.ItemPedido;
 import br.com.fastfood.domain.core.Pedido;
 import br.com.fastfood.domain.core.StatusPedido;
 import jakarta.persistence.*;
@@ -32,6 +30,7 @@ public class PedidoEntity implements Serializable {
 
         pedido.getItensPedido().forEach(itemPedido -> {
             var itemPedidoEntity = new ItemPedidoEntity(itemPedido);
+            itemPedidoEntity.setPedido(this);
             itensPedido.add(itemPedidoEntity);
         });
 
@@ -53,14 +52,6 @@ public class PedidoEntity implements Serializable {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedidoEntity> itensPedido;
 
-
-    public Pedido toDoamin() {
-        List<ItemPedido> intensPedidoList = new ArrayList<>();
-        this.itensPedido.forEach(itemPedidoEntity -> {
-            intensPedidoList.add(new ItemPedido(itemPedidoEntity));
-        });
-        return new Pedido(this.id, new Cliente(this.cliente.getId(), this.cliente.getCpf(), this.cliente.getNome(), this.cliente.getEmail(), this.cliente.getSenha()), this.total, this.data, this.statusPedido, intensPedidoList);
-    }
 
     public UUID getId() {
         return id;

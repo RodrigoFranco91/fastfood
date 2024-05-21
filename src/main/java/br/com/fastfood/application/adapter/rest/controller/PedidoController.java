@@ -24,11 +24,11 @@ public class PedidoController implements PedidoControllerPort {
     }
 
     @PostMapping
-    public ResponseEntity<PedidoResponseDTO> pedido(@RequestBody PedidoDTO pedidoDTO, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> pedido(@RequestBody PedidoDTO pedidoDTO, UriComponentsBuilder uriBuilder) {
 
-        var response = pedidoService.cadastrarPedido(pedidoDTO);
-        URI uri = uriBuilder.path("/pedido/{id}").buildAndExpand(response.id()).toUri();
+        pedidoService.cadastrarPedido(pedidoDTO);
+        //URI uri = uriBuilder.path("/pedido/{id}").buildAndExpand(response.id()).toUri();
 
-        return ResponseEntity.created(uri).body(response);
+        return ResponseEntity.ok().build();
     }
 }

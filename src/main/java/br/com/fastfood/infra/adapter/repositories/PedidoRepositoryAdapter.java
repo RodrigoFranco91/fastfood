@@ -15,11 +15,10 @@ public class PedidoRepositoryAdapter implements PedidoRepositoryPort {
     }
 
     @Override
-    public Pedido inserePedido(Pedido pedido) {
+    public void inserePedido(Pedido pedido) {
 
         var pedidoEntity = new PedidoEntity(pedido);
-        var pedidoSalvo = springPedidoRepository.save(pedidoEntity);
+        var salvo = springPedidoRepository.save(pedidoEntity);
 
-        return pedidoSalvo.toDoamin();
     }
 }

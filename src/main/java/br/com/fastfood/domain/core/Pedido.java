@@ -1,7 +1,5 @@
 package br.com.fastfood.domain.core;
 
-import br.com.fastfood.infra.adapter.entities.PedidoEntity;
-
 import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -14,47 +12,12 @@ public class Pedido {
     private UUID id;
     private Cliente cliente;
     private BigDecimal total = BigDecimal.ZERO;
-    private final ZonedDateTime data;
-    private StatusPedido statusPedido;
-    private List<ItemPedido> itensPedido;
+    private final ZonedDateTime data = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
+    private StatusPedido statusPedido = StatusPedido.AGUARDANDO_PAGAMENTO;
+    private List<ItemPedido> itensPedido = new ArrayList<>();
 
-    public Pedido(UUID id, Cliente cliente, BigDecimal total, ZonedDateTime data, StatusPedido statusPedido, List<ItemPedido> itensPedido) {
-        this.id = id;
-        this.cliente = cliente;
-        this.total = total;
-        this.data = data;
-        this.statusPedido = statusPedido;
-        this.itensPedido = itensPedido;
-    }
-
-    public Pedido(Cliente cliente, List<ItemPedido> itensPedido) {
-        this.cliente = cliente;
-        this.itensPedido = itensPedido;
-        this.data = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
-        this.statusPedido = StatusPedido.AGUARDANDO_PAGAMENTO;
-        calculaTotal();
-
-        itensPedido.forEach(itemPedido -> {
-            itemPedido.setPedido(this);
-        });
-
-    }
-
-    public Pedido(PedidoEntity pedidoEntity) {
-        this.id = pedidoEntity.getId();
-        this.cliente = new Cliente(pedidoEntity.getCliente());
-        this.total = pedidoEntity.getTotal();
-        this.data = pedidoEntity.getData();
-        this.statusPedido = pedidoEntity.getStatusPedido();
-        this.itensPedido = new ArrayList<>();
-
-        pedidoEntity.getItensPedido().forEach(itemPedidoEntity -> {
-            itensPedido.add(new ItemPedido(itemPedidoEntity));
-        });
-    }
 
     public void calculaTotal() {
-
         itensPedido.forEach(itemPedido -> {
             total = total.add(itemPedido.calculaTotal());
         });
@@ -82,5 +45,9 @@ public class Pedido {
 
     public List<ItemPedido> getItensPedido() {
         return itensPedido;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
