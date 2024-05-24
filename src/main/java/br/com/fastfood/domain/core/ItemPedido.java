@@ -12,12 +12,22 @@ public class ItemPedido {
     private Integer quantidadeDoItem;
     private BigDecimal precoAtualDoIem;
 
+    public ItemPedido() {
+    }
+
     public ItemPedido(Produto produtoDomain, Integer quantidade, BigDecimal preco) {
         this.produto = produtoDomain;
         this.quantidadeDoItem = quantidade;
         this.precoAtualDoIem = preco;
     }
 
+
+    public ItemPedido(UUID id, Produto produto, Integer quantidadeDoItem, BigDecimal precoAtualDoIem) {
+        this.id = id;
+        this.produto = produto;
+        this.quantidadeDoItem = quantidadeDoItem;
+        this.precoAtualDoIem = precoAtualDoIem;
+    }
 
     public UUID getId() {
         return id;

@@ -36,6 +36,23 @@ public class PedidoEntity implements Serializable {
 
     }
 
+    public PedidoEntity(Pedido pedido, UUID id) {
+        this.id = id;
+        this.cliente = new ClienteEntity(pedido.getCliente());
+        this.total = pedido.getTotal();
+        this.data = pedido.getData();
+        this.statusPedido = pedido.getStatusPedido();
+        this.itensPedido = new ArrayList<>();
+
+        pedido.getItensPedido().forEach(itemPedido -> {
+            var itemPedidoEntity = new ItemPedidoEntity(itemPedido);
+            itemPedidoEntity.setId(itemPedido.getId());
+            itemPedidoEntity.setPedido(this);
+            itensPedido.add(itemPedidoEntity);
+        });
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JdbcTypeCode(SqlTypes.CHAR)
@@ -75,5 +92,19 @@ public class PedidoEntity implements Serializable {
 
     public List<ItemPedidoEntity> getItensPedido() {
         return itensPedido;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
+    }
+
+    public Pedido toDomain() {
+        var itemPedidoList = this.itensPedido.stream().map(ItemPedidoEntity::toDomain).toList();
+        return new Pedido(this.id, this.cliente.toDomain(), this.total, this.data, this.statusPedido, itemPedidoList);
+
     }
 }

@@ -41,20 +41,20 @@ public class ProdutoRepositoryAdapter implements ProdutoRepositoryPort {
 
     @Override
     public Produto pegarProduto(UUID id) {
-        var produtoEntity = springProdutoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        var produtoEntity = springProdutoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe produto com o ID: " + id));
         return produtoEntity.toDomain();
     }
 
     @Override
     public void removerProduto(UUID id) {
-        var produtoEntity = springProdutoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        var produtoEntity = springProdutoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe produto com o ID: " + id));
         springProdutoRepository.delete(produtoEntity);
 
     }
 
     @Override
     public Produto atualizarProduto(Produto produto) {
-        var produtoEntity = springProdutoRepository.findById(produto.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        var produtoEntity = springProdutoRepository.findById(produto.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe produto com o ID: " + produto.getId()));
         produtoEntity.setCategoria(produto.getCategoria());
         produtoEntity.setNome(produto.getNome());
         produtoEntity.setPreco(produto.getPreco());

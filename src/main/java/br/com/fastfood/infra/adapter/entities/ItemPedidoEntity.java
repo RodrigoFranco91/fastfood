@@ -16,8 +16,7 @@ public class ItemPedidoEntity implements Serializable {
     public ItemPedidoEntity() {
     }
 
-    public
-    ItemPedidoEntity(ItemPedido itemPedido) {
+    public ItemPedidoEntity(ItemPedido itemPedido) {
 
         this.produto = new ProdutoEntity(itemPedido.getProduto());
         this.quantidadeDoItem = itemPedido.getQuantidadeDoItem();
@@ -61,5 +60,13 @@ public class ItemPedidoEntity implements Serializable {
 
     public void setPedido(PedidoEntity pedido) {
         this.pedido = pedido;
+    }
+
+    public ItemPedido toDomain() {
+        return new ItemPedido(this.id, this.produto.toDomain(), this.quantidadeDoItem, this.precoAtualDoIem);
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

@@ -6,5 +6,6 @@ public enum StatusPedido {
     RECEBIDO,
     EM_PREPARACAO,
     PRONTO,
-    FINALIZADO
+    FINALIZADO;
+
 }
