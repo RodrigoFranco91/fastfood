@@ -10,7 +10,7 @@ public class ItemPedido {
     private Pedido pedido;
     private Produto produto;
     private Integer quantidadeDoItem;
-    private BigDecimal precoAtualDoIem;
+    private BigDecimal precoAtualDoItem;
 
     public ItemPedido() {
     }
@@ -18,15 +18,15 @@ public class ItemPedido {
     public ItemPedido(Produto produtoDomain, Integer quantidade, BigDecimal preco) {
         this.produto = produtoDomain;
         this.quantidadeDoItem = quantidade;
-        this.precoAtualDoIem = preco;
+        this.precoAtualDoItem = preco;
     }
 
 
-    public ItemPedido(UUID id, Produto produto, Integer quantidadeDoItem, BigDecimal precoAtualDoIem) {
+    public ItemPedido(UUID id, Produto produto, Integer quantidadeDoItem, BigDecimal precoAtualDoItem) {
         this.id = id;
         this.produto = produto;
         this.quantidadeDoItem = quantidadeDoItem;
-        this.precoAtualDoIem = precoAtualDoIem;
+        this.precoAtualDoItem = precoAtualDoItem;
     }
 
     public UUID getId() {
@@ -45,12 +45,12 @@ public class ItemPedido {
         return quantidadeDoItem;
     }
 
-    public BigDecimal getPrecoAtualDoIem() {
-        return precoAtualDoIem;
+    public BigDecimal getPrecoAtualDoItem() {
+        return precoAtualDoItem;
     }
 
     public BigDecimal calculaTotal() {
-        return precoAtualDoIem.multiply(BigDecimal.valueOf(quantidadeDoItem));
+        return precoAtualDoItem.multiply(BigDecimal.valueOf(quantidadeDoItem));
     }
 
     public void setPedido(Pedido pedido) {

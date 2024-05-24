@@ -20,7 +20,7 @@ public class ItemPedidoEntity implements Serializable {
 
         this.produto = new ProdutoEntity(itemPedido.getProduto());
         this.quantidadeDoItem = itemPedido.getQuantidadeDoItem();
-        this.precoAtualDoIem = itemPedido.getPrecoAtualDoIem();
+        this.precoAtualDoItem = itemPedido.getPrecoAtualDoItem();
 
     }
 
@@ -36,7 +36,7 @@ public class ItemPedidoEntity implements Serializable {
     @ManyToOne
     private ProdutoEntity produto;
     private Integer quantidadeDoItem;
-    private BigDecimal precoAtualDoIem;
+    private BigDecimal precoAtualDoItem;
 
     public UUID getId() {
         return id;
@@ -54,8 +54,8 @@ public class ItemPedidoEntity implements Serializable {
         return quantidadeDoItem;
     }
 
-    public BigDecimal getPrecoAtualDoIem() {
-        return precoAtualDoIem;
+    public BigDecimal getPrecoAtualDoItem() {
+        return precoAtualDoItem;
     }
 
     public void setPedido(PedidoEntity pedido) {
@@ -63,7 +63,7 @@ public class ItemPedidoEntity implements Serializable {
     }
 
     public ItemPedido toDomain() {
-        return new ItemPedido(this.id, this.produto.toDomain(), this.quantidadeDoItem, this.precoAtualDoIem);
+        return new ItemPedido(this.id, this.produto.toDomain(), this.quantidadeDoItem, this.precoAtualDoItem);
     }
 
     public void setId(UUID id) {
