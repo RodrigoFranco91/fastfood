@@ -1,8 +1,7 @@
 services:
   banco:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    container_name: container-banco
+    image: mysql:lts
+    container_name: container-db
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: fastfood-db
