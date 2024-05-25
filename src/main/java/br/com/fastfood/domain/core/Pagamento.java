@@ -14,4 +14,34 @@ public class Pagamento {
     private BigDecimal valorCobrado;
 
     private Pedido pedido;
+
+    public Pagamento(Boolean pago, BigDecimal valorCobrado, Pedido pedido) {
+        this.pago = pago;
+        this.valorCobrado = valorCobrado;
+        this.pedido = pedido;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public ZonedDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public BigDecimal getValorCobrado() {
+        return valorCobrado;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }

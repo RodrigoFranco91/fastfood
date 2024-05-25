@@ -1,7 +1,6 @@
 package br.com.fastfood.application.adapter.rest.dto.response;
 
 import br.com.fastfood.domain.core.Pedido;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;

@@ -1,17 +1,14 @@
 package br.com.fastfood.application.adapter.rest.dto.response;
 
+import br.com.fastfood.domain.core.Pagamento;
+
 import java.math.BigDecimal;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-public class PagamentoResponseDTO {
-
-    private UUID id;
-    private ZonedDateTime dataHora = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
-    private Boolean pago = Boolean.FALSE;
-
-    private BigDecimal valorCobrado;
-
-    private PedidoResponseDTO pedido;
+public record PagamentoResponseDTO(UUID id, ZonedDateTime dataHora, Boolean pago, BigDecimal valorCobrado,
+                                   PedidoResponseDTO pedido) {
+    public PagamentoResponseDTO(Pagamento pagamento) {
+        this(pagamento.getId(), pagamento.getDataHora(), pagamento.getPago(), pagamento.getValorCobrado(), new PedidoResponseDTO(pagamento.getPedido()));
+    }
 }

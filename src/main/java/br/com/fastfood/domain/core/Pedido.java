@@ -63,6 +63,10 @@ public class Pedido {
         this.cliente = cliente;
     }
 
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
+    }
+
     public void avancaStatus() {
         var statusAtual = this.statusPedido.name();
 

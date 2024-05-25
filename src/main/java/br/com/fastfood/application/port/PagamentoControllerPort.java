@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.UUID;
 
@@ -14,5 +15,5 @@ public interface PagamentoControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Pagamento Realizado:"),
     })
-    ResponseEntity<PagamentoResponseDTO> pagamento(UUID pedidoId);
+    ResponseEntity<PagamentoResponseDTO> pagamento(UUID pedidoId, UriComponentsBuilder uriComponentsBuilder);
 }

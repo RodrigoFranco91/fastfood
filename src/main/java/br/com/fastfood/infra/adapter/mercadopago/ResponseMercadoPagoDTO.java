@@ -8,4 +8,12 @@ public class ResponseMercadoPagoDTO {
 
     private Boolean pago;
     private String mensagem;
+
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
 }

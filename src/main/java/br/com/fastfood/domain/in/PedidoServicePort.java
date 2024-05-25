@@ -2,7 +2,6 @@ package br.com.fastfood.domain.in;
 
 import br.com.fastfood.application.adapter.rest.dto.request.PedidoDTO;
 import br.com.fastfood.application.adapter.rest.dto.response.PedidoResponseDTO;
-import br.com.fastfood.domain.core.StatusPedido;
 
 import java.util.List;
 import java.util.Set;
