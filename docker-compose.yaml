@@ -9,9 +9,7 @@ services:
       - 3306:3306
 
   fastfood:
-    build:
-      dockerfile: Dockerfile
-      context: .
+    image: rodrigofranco91/fastfood:v1
     container_name: container-fastfood
     ports:
       - 8080:8080
